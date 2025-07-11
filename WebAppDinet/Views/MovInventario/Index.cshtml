@@ -1,0 +1,179 @@
+﻿@model IEnumerable<CapaEntidad.MovInventario>
+
+@{
+    ViewBag.Title = "MOVIMIENTOS DE ALMACEN";
+}
+
+<h2>MOVIMIENTOS DE ALMACEN</h2>
+
+<p>
+    @*@Html.ActionLink("Nuevo Movimiento", "Crear")*@
+    <a href="@Url.Action("Crear", "MovInventario")" class="btn btn-primary">Nuevo Movimiento</a>
+
+</p>
+<div>
+    @using (Html.BeginForm("Index", "MovInventario", FormMethod.Get))
+    {
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label>Fecha Inicio</label>
+                <input type="date" name="FechaInicio" class="form-control" value="@Request["FechaInicio"]" />
+            </div>
+            <div class="col-md-2">
+                <label>Fecha Fin</label>
+                <input type="date" name="FechaFin" class="form-control" value="@Request["FechaFin"]" />
+            </div>
+            <div class="col-md-2">
+                <label>Tipo Movimiento</label>
+                <input type="text" name="TipoMovimiento" class="form-control" value="@Request["TipoMovimiento"]" />
+            </div>
+            <div class="col-md-3">
+                <label>Nro Documento</label>
+                <input type="text" name="NroDocumento" class="form-control" value="@Request["NroDocumento"]" />
+            </div>
+            <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary ml-2">Limpiar</a>
+            </div>
+        </div>
+    }
+
+</div>
+<div class="table table-responsive">
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.COD_CIA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANIA_VENTA_3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ALMACEN_VENTA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPO_MOVIMIENTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPO_DOCUMENTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NRO_DOCUMENTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COD_ITEM_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PROVEEDOR)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ALMACEN_DESTINO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CANTIDAD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOC_REF_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOC_REF_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOC_REF_3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOC_REF_4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOC_REF_5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA_TRANSACCION)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COD_CIA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COMPANIA_VENTA_3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ALMACEN_VENTA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPO_MOVIMIENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPO_DOCUMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NRO_DOCUMENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COD_ITEM_2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PROVEEDOR)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ALMACEN_DESTINO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CANTIDAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOC_REF_1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOC_REF_2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOC_REF_3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOC_REF_4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOC_REF_5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHA_TRANSACCION)
+                </td>
+                <td>
+                    <!--@Html.ActionLink("Edit", "Editar", new { /* id=item.PrimaryKey */ }) |-->
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    <!--@Html.ActionLink("Delete", "Eliminar", new { /* id=item.PrimaryKey */ })-->
+
+
+                    @Html.ActionLink("Editar", "Editar", new
+                    {
+                                codCia = item.COD_CIA,
+                                comp = item.COMPANIA_VENTA_3,
+                                alm = item.ALMACEN_VENTA,
+                                tipoMov = item.TIPO_MOVIMIENTO,
+                                tipoDoc = item.TIPO_DOCUMENTO,
+                                nroDoc = item.NRO_DOCUMENTO,
+                                codItem = item.COD_ITEM_2
+                            }) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new
+                    {
+                        codCia = item.COD_CIA,
+                        comp = item.COMPANIA_VENTA_3,
+                        alm = item.ALMACEN_VENTA,
+                        tipoMov = item.TIPO_MOVIMIENTO,
+                        tipoDoc = item.TIPO_DOCUMENTO,
+                        nroDoc = item.NRO_DOCUMENTO,
+                        codItem = item.COD_ITEM_2
+                    }, new { onclick = "return confirm('¿Está seguro de eliminar?');" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
