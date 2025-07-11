@@ -13,41 +13,6 @@ namespace CapaDatos
     {
         private string cadenaConexion = "Server=LUIS-PC;Database=DBDINETPRUEBA;User Id=SA;Password=123456;";
 
-        //public List<MovInventario> Listar()
-        //{
-        //    var lista = new List<MovInventario>();
-        //    using (SqlConnection cn = new SqlConnection(cadenaConexion))
-        //    {
-        //        //string query = "SELECT * FROM dbo.MOV_INVENTARIO";
-        //        //SqlCommand cmd = new SqlCommand(query, cn);
-        //        SqlCommand cmd = new SqlCommand("SP_MOV_INVENTARIO_LISTAR", cn);
-        //        cn.Open();
-        //        SqlDataReader dr = cmd.ExecuteReader();
-        //        while (dr.Read())
-        //        {
-        //            lista.Add(new MovInventario
-        //            {
-        //                COD_CIA = dr["COD_CIA"].ToString(),
-        //                COMPANIA_VENTA_3 = dr["COMPANIA_VENTA_3"].ToString(),
-        //                ALMACEN_VENTA = dr["ALMACEN_VENTA"].ToString(),
-        //                TIPO_MOVIMIENTO = dr["TIPO_MOVIMIENTO"].ToString(),
-        //                TIPO_DOCUMENTO = dr["TIPO_DOCUMENTO"].ToString(),
-        //                NRO_DOCUMENTO = dr["NRO_DOCUMENTO"].ToString(),
-        //                COD_ITEM_2 = dr["COD_ITEM_2"].ToString(),
-        //                PROVEEDOR = dr["PROVEEDOR"].ToString(),
-        //                ALMACEN_DESTINO = dr["ALMACEN_DESTINO"].ToString(),
-        //                CANTIDAD = dr["CANTIDAD"] as int?,
-        //                DOC_REF_1 = dr["DOC_REF_1"].ToString(),
-        //                DOC_REF_2 = dr["DOC_REF_2"].ToString(),
-        //                DOC_REF_3 = dr["DOC_REF_3"].ToString(),
-        //                DOC_REF_4 = dr["DOC_REF_4"].ToString(),
-        //                DOC_REF_5 = dr["DOC_REF_5"].ToString(),
-        //                FECHA_TRANSACCION = dr["FECHA_TRANSACCION"] as DateTime?
-        //            });
-        //        }
-        //    }
-        //    return lista;
-        //}
         public List<MovInventario> Listar(FiltroInventario filtro)
         {
             var lista = new List<MovInventario>();

@@ -13,12 +13,8 @@ namespace WebAppDinet.Controllers
     public class MovInventarioController : Controller
     {
         // GET: MovInventario
-        //MovInventarioNegocio negocio = new MovInventarioNegocio();
         private MovInventarioServiceClient cliente = new MovInventarioServiceClient();
-        //public ActionResult Index()
-        //{
-        //    return View(negocio.Listar());
-        //}
+
         public ActionResult Index(DateTime? FechaInicio, DateTime? FechaFin, string TipoMovimiento, string NroDocumento)
         {
             var filtro = new FiltroInventario
@@ -29,7 +25,6 @@ namespace WebAppDinet.Controllers
                 NroDocumento = string.IsNullOrWhiteSpace(NroDocumento) ? null : NroDocumento
             };
 
-            //var lista = negocio.Listar(filtro);
             var lista = cliente.Listar(filtro);
             return View(lista);
         }
@@ -41,14 +36,12 @@ namespace WebAppDinet.Controllers
         [HttpPost]
         public ActionResult Crear(MovInventario mov)
         {
-            //negocio.Guardar(mov);
             cliente.Guardar(mov);
             return RedirectToAction("Index");
         }
 
         public ActionResult Eliminar(string codCia, string comp, string alm, string tipoMov, string tipoDoc, string nroDoc, string codItem)
         {
-            //negocio.Eliminar(codCia, comp, alm, tipoMov, tipoDoc, nroDoc, codItem);
             cliente.Eliminar(codCia, comp, alm, tipoMov, tipoDoc, nroDoc, codItem);
 
             return RedirectToAction("Index");
@@ -63,7 +56,6 @@ namespace WebAppDinet.Controllers
                 NroDocumento = null
             };
             var lista = cliente.Listar(filtro);
-            //var item = negocio.Listar(filtro).Find(x =>
             var item = lista.FirstOrDefault(x =>
                 x.COD_CIA == codCia &&
                 x.COMPANIA_VENTA_3 == comp &&
@@ -80,7 +72,7 @@ namespace WebAppDinet.Controllers
         [HttpPost]
         public ActionResult Editar(MovInventario mov)
         {
-            cliente.Editar(mov); // Reutilizamos el mismo método Guardar para Insertar o Actualizar
+            cliente.Editar(mov); 
             return RedirectToAction("Index");
         }
       

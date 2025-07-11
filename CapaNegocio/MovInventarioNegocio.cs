@@ -12,10 +12,6 @@ namespace CapaNegocio
     {
         private MovInventarioDatos datos = new MovInventarioDatos();
 
-        //public List<MovInventario> Listar()
-        //{
-        //    return datos.Listar();
-        //}
         public List<MovInventario> Listar(FiltroInventario filtro)
         {
             return datos.Listar(filtro);

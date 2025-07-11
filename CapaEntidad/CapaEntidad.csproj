@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="FiltroInventario.cs" />
     <Compile Include="MovInventario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
