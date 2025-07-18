@@ -8,6 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -21,7 +23,7 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Inicio", "Index", "MovInventario", new { area = "" }, new { @class = "nav-link" })</li>
                     @*<li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
+                        <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
                 </ul>
             </div>
         </div>
@@ -37,6 +39,8 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jqueryval")
+
 
 </body>
 </html>

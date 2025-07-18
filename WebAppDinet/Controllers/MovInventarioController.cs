@@ -15,8 +15,10 @@ namespace WebAppDinet.Controllers
         // GET: MovInventario
         private MovInventarioServiceClient cliente = new MovInventarioServiceClient();
 
-        public ActionResult Index(DateTime? FechaInicio, DateTime? FechaFin, string TipoMovimiento, string NroDocumento)
+        public ActionResult Index(DateTime? FechaInicio, DateTime? FechaFin, string TipoMovimiento, string NroDocumento, int page = 1)
         {
+            int pageSize = 10;
+
             var filtro = new FiltroInventario
             {
                 FechaInicio = FechaInicio,
@@ -26,7 +28,24 @@ namespace WebAppDinet.Controllers
             };
 
             var lista = cliente.Listar(filtro);
-            return View(lista);
+
+            int totalItems = lista.Count();
+
+            var movimientosPaginados = lista
+                .Skip((page - 1) * pageSize) 
+                .Take(pageSize) 
+                .ToList();
+
+            var model = new PaginacionViewModel
+            {
+                Movimientos = movimientosPaginados, 
+                TotalItems = totalItems, 
+                PageSize = pageSize, 
+                CurrentPage = page, 
+
+            };
+
+            return View(model);
         }
         public ActionResult Crear()
         {

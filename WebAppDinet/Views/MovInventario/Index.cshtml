@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CapaEntidad.MovInventario>
+﻿@model CapaEntidad.PaginacionViewModel
 
 @{
     ViewBag.Title = "MOVIMIENTOS DE ALMACEN";
@@ -33,7 +33,7 @@
                 <input type="text" name="NroDocumento" class="form-control" value="@Request["NroDocumento"]" />
             </div>
             <div class="col-md-3 d-flex align-items-end">
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-primary ">Buscar</button>
                 <a href="@Url.Action("Index")" class="btn btn-secondary ml-2">Limpiar</a>
             </div>
         </div>
@@ -42,142 +42,164 @@
 </div>
 <div class="table table-responsive">
     <table class="table table-striped table-bordered">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.COD_CIA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.COMPANIA_VENTA_3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ALMACEN_VENTA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TIPO_MOVIMIENTO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TIPO_DOCUMENTO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NRO_DOCUMENTO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.COD_ITEM_2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PROVEEDOR)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ALMACEN_DESTINO)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CANTIDAD)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DOC_REF_1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DOC_REF_2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DOC_REF_3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DOC_REF_4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DOC_REF_5)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FECHA_TRANSACCION)
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.COD_CIA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.COMPANIA_VENTA_3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ALMACEN_VENTA)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TIPO_MOVIMIENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TIPO_DOCUMENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NRO_DOCUMENTO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.COD_ITEM_2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PROVEEDOR)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ALMACEN_DESTINO)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CANTIDAD)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOC_REF_1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOC_REF_2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOC_REF_3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOC_REF_4)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DOC_REF_5)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FECHA_TRANSACCION)
-                    @*@Html.DisplayFor(modelItem => item.FECHA_TRANSACCION.ToString("dd/MM/yyyy"))*@
-                </td>
-                <td>
-
-                    @Html.ActionLink("Editar", "Editar", new
-                    {
-                                codCia = item.COD_CIA,
-                                comp = item.COMPANIA_VENTA_3,
-                                alm = item.ALMACEN_VENTA,
-                                tipoMov = item.TIPO_MOVIMIENTO,
-                                tipoDoc = item.TIPO_DOCUMENTO,
-                                nroDoc = item.NRO_DOCUMENTO,
-                                codItem = item.COD_ITEM_2
-                            }, new { @class = "btn btn-sm btn-warning" })
-                </td>
-                <td>
-
-                    @Html.ActionLink("Eliminar", "Eliminar", new
-               {
-                   codCia = item.COD_CIA,
-                   comp = item.COMPANIA_VENTA_3,
-                   alm = item.ALMACEN_VENTA,
-                   tipoMov = item.TIPO_MOVIMIENTO,
-                   tipoDoc = item.TIPO_DOCUMENTO,
-                   nroDoc = item.NRO_DOCUMENTO,
-                   codItem = item.COD_ITEM_2
-               }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('¿Está seguro de eliminar?');" })
-                </td>
+                <th>
+                    COD_CIA
+                </th>
+                <th>
+                    COMPANIA_VENTA_3
+                </th>
+                <th>
+                    ALMACEN_VENTA
+                </th>
+                <th>
+                    TIPO_MOVIMIENTO
+                </th>
+                <th>
+                    TIPO_DOCUMENTO
+                </th>
+                <th>
+                    NRO_DOCUMENTO
+                </th>
+                <th>
+                    COD_ITEM_2
+                </th>
+                <th>
+                    PROVEEDOR
+                </th>
+                <th>
+                    ALMACEN_DESTINO
+                </th>
+                <th>
+                    CANTIDAD
+                </th>
+                <th>
+                    DOC_REF_1
+                </th>
+                <th>
+                    DOC_REF_2
+                </th>
+                <th>
+                    DOC_REF_3
+                </th>
+                <th>
+                    DOC_REF_4
+                </th>
+                <th>
+                    DOC_REF_5
+                </th>
+                <th>
+                    FECHA_TRANSACCION
+                </th>
+                <th></th>
+                <th></th>
             </tr>
-        }
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Movimientos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COD_CIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COMPANIA_VENTA_3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ALMACEN_VENTA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TIPO_MOVIMIENTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TIPO_DOCUMENTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NRO_DOCUMENTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COD_ITEM_2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PROVEEDOR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ALMACEN_DESTINO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CANTIDAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOC_REF_1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOC_REF_2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOC_REF_3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOC_REF_4)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOC_REF_5)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FECHA_TRANSACCION)
+                        @*@Html.DisplayFor(modelItem => item.FECHA_TRANSACCION.ToString("dd/MM/yyyy"))*@
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Editar", "Editar", new
+                        {
+                                    codCia = item.COD_CIA,
+                                    comp = item.COMPANIA_VENTA_3,
+                                    alm = item.ALMACEN_VENTA,
+                                    tipoMov = item.TIPO_MOVIMIENTO,
+                                    tipoDoc = item.TIPO_DOCUMENTO,
+                                    nroDoc = item.NRO_DOCUMENTO,
+                                    codItem = item.COD_ITEM_2
+                                }, new { @class = "btn btn-sm btn-warning" })
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Eliminar", "Eliminar", new
+                   {
+                       codCia = item.COD_CIA,
+                       comp = item.COMPANIA_VENTA_3,
+                       alm = item.ALMACEN_VENTA,
+                       tipoMov = item.TIPO_MOVIMIENTO,
+                       tipoDoc = item.TIPO_DOCUMENTO,
+                       nroDoc = item.NRO_DOCUMENTO,
+                       codItem = item.COD_ITEM_2
+                   }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('¿Está seguro de eliminar?');" })
+                    </td>
+                </tr>
+            }
+        </tbody>
 
     </table>
 
+</div>
+<div class="pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <a href="@Url.Action("Index", new { page = Model.CurrentPage - 1, FechaInicio = Request["FechaInicio"], FechaFin = Request["FechaFin"], TipoMovimiento = Request["TipoMovimiento"], NroDocumento = Request["NroDocumento"] })" class="btn btn-secondary">Anterior</a>
+    }
+
+    @for (var i = 1; i <= Model.TotalPages; i++)
+    {
+        <a href="@Url.Action("Index", new { page = i, FechaInicio = Request["FechaInicio"], FechaFin = Request["FechaFin"], TipoMovimiento = Request["TipoMovimiento"], NroDocumento = Request["NroDocumento"] })"
+           class="btn btn-secondary @(i == Model.CurrentPage ? "active" : "")">
+            @i
+        </a>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <a href="@Url.Action("Index", new { page = Model.CurrentPage + 1, FechaInicio = Request["FechaInicio"], FechaFin = Request["FechaFin"], TipoMovimiento = Request["TipoMovimiento"], NroDocumento = Request["NroDocumento"] })" class="btn btn-secondary">Siguiente</a>
+    }
 </div>
 @section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
