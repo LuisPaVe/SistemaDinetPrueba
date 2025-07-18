@@ -37,13 +37,14 @@ namespace WebAppDinet.Controllers
         public ActionResult Crear(MovInventario mov)
         {
             cliente.Guardar(mov);
+            TempData["Mensaje"] = "guardado";
             return RedirectToAction("Index");
         }
 
         public ActionResult Eliminar(string codCia, string comp, string alm, string tipoMov, string tipoDoc, string nroDoc, string codItem)
         {
             cliente.Eliminar(codCia, comp, alm, tipoMov, tipoDoc, nroDoc, codItem);
-
+            TempData["Mensaje"] = "eliminado";
             return RedirectToAction("Index");
         }
         public ActionResult Editar(string codCia, string comp, string alm, string tipoMov, string tipoDoc, string nroDoc, string codItem)
@@ -72,7 +73,8 @@ namespace WebAppDinet.Controllers
         [HttpPost]
         public ActionResult Editar(MovInventario mov)
         {
-            cliente.Editar(mov); 
+            cliente.Editar(mov);
+            TempData["Mensaje"] = "editado";
             return RedirectToAction("Index");
         }
       

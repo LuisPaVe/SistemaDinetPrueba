@@ -59,7 +59,8 @@ namespace CapaDatos
             using (SqlConnection cn = new SqlConnection(cadenaConexion))
             {
 
-                SqlCommand cmd = new SqlCommand("SP_MOV_INVENTARIO_GRABAR", cn);
+                SqlCommand cmd = new SqlCommand("SP_MOVINVENTARIO_GRABAR", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@COD_CIA", mov.COD_CIA);
                 cmd.Parameters.AddWithValue("@COMPANIA_VENTA_3", mov.COMPANIA_VENTA_3);
                 cmd.Parameters.AddWithValue("@ALMACEN_VENTA", mov.ALMACEN_VENTA);
@@ -87,6 +88,7 @@ namespace CapaDatos
             {
 
                 SqlCommand cmd = new SqlCommand("SP_MOV_INVENTARIO_MODIFICAR", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@COD_CIA", mov.COD_CIA);
                 cmd.Parameters.AddWithValue("@COMPANIA_VENTA_3", mov.COMPANIA_VENTA_3);
                 cmd.Parameters.AddWithValue("@ALMACEN_VENTA", mov.ALMACEN_VENTA);
@@ -115,6 +117,7 @@ namespace CapaDatos
             {
 
                 SqlCommand cmd = new SqlCommand("SP_MOV_INVENTARIO_ELIMINAR", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@COD_CIA", codCia);
                 cmd.Parameters.AddWithValue("@COMPANIA_VENTA_3", comp);
                 cmd.Parameters.AddWithValue("@ALMACEN_VENTA", alm);
